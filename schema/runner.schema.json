@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/runner.schema.json",
+  "title": "OpenExchange runner/selection",
+  "type": "object",
+  "required": ["selectionId", "name", "role", "status"],
+  "properties": {
+    "selectionId": {"type": "string"},
+    "identifier": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/identifier"}},
+    "name": {"type": "string"},
+    "role": {
+      "enum": ["win", "place", "yes", "no", "home", "away", "draw", "over", "under", "participant", "other"]
+    },
+    "status": {"enum": ["active", "removed", "winner", "loser", "placed", "hidden"]},
+    "handicap": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "adjustmentFactor": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "removalDate": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "reductionFactor": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "bsp": {
+      "type": "object",
+      "properties": {
+        "nearPrice": {"$ref": "common.schema.json#/$defs/decimalString"},
+        "farPrice": {"$ref": "common.schema.json#/$defs/decimalString"},
+        "actualSP": {"$ref": "common.schema.json#/$defs/decimalString"},
+        "backStakeTaken": {"$ref": "common.schema.json#/$defs/decimalString"},
+        "layLiabilityTaken": {"$ref": "common.schema.json#/$defs/decimalString"}
+      },
+      "additionalProperties": true
+    },
+    "sortPriority": {"type": "integer"}
+  },
+  "additionalProperties": true
+}

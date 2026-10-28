@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/common.schema.json",
+  "title": "OpenExchange common definitions",
+  "type": "object",
+  "$defs": {
+    "identifier": {
+      "type": "object",
+      "required": ["propertyID", "value"],
+      "properties": {
+        "propertyID": {"type": "string"},
+        "value": {"type": "string"},
+        "scheme": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "decimalString": {
+      "type": "string",
+      "pattern": "^-?[0-9]+(\\.[0-9]+)?$",
+      "description": "Exact decimal, never a float."
+    },
+    "decimalOdds": {
+      "type": "string",
+      "pattern": "^(0?\\.[0-9]+|[1-9][0-9]*(\\.[0-9]+)?)$",
+      "description": "Decimal odds strictly greater than 1 are validated semantically; format keeps exact decimals."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

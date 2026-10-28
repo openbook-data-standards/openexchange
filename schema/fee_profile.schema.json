@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/fee_profile.schema.json",
+  "title": "OpenExchange fee profile",
+  "type": "object",
+  "required": ["openexchangeVersion", "feeType", "id", "model"],
+  "properties": {
+    "openexchangeVersion": {"type": "string"},
+    "feeType": {"const": "exchange:fee_profile"},
+    "id": {"type": "string"},
+    "identifier": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/identifier"}},
+    "model": {"enum": ["net_winnings", "per_contract", "per_ticket", "none", "other"]},
+    "marketBaseRate": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "discountRate": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "chargeableBasis": {
+      "type": "string",
+      "description": "What the commission is charged on, e.g. net market winnings, gross winnings."
+    },
+    "perContract": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "perTicket": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "settlementFee": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "payoutUnit": {"type": "string", "description": "Value of one contract at settlement, e.g. 0.01, 1, 100."},
+    "currency": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": true
+}

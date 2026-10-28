@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/venue.schema.json",
+  "title": "OpenExchange venue descriptor",
+  "type": "object",
+  "required": ["openexchangeVersion", "venueType", "id", "name", "kind"],
+  "properties": {
+    "openexchangeVersion": {"type": "string"},
+    "venueType": {"const": "exchange:venue"},
+    "id": {"type": "string"},
+    "identifier": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/identifier"}},
+    "name": {"type": "string"},
+    "kind": {"enum": ["betting_exchange", "prediction_exchange", "sportsbook", "broker", "other"]},
+    "jurisdiction": {"type": "array", "items": {"type": "string"}},
+    "currencies": {"type": "array", "items": {"type": "string"}},
+    "distribution": {
+      "type": "array",
+      "description": "Brands that route to this venue's order book (distributors, not separate venues).",
+      "items": {"type": "string"}
+    },
+    "feeProfile": {"type": "string", "description": "id of a fee_profile document."},
+    "url": {"type": "string"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/order_book.schema.json",
+  "title": "OpenExchange order book (per runner, back/lay depth)",
+  "type": "object",
+  "required": ["openexchangeVersion", "bookType", "venue", "marketId", "selectionId", "side", "levels", "observedAt"],
+  "properties": {
+    "openexchangeVersion": {"type": "string"},
+    "bookType": {"const": "exchange:order_book"},
+    "id": {"type": "string"},
+    "identifier": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/identifier"}},
+    "venue": {"type": "string"},
+    "marketId": {"type": "string"},
+    "selectionId": {"type": "string"},
+    "side": {"enum": ["back", "lay"], "description": "Exchange side of the ladder."},
+    "delayed": {"type": "boolean", "description": "Venue reports this data delayed (e.g. Betfair delayed app key)."},
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["price", "size"],
+        "properties": {
+          "price": {"$ref": "common.schema.json#/$defs/decimalString"},
+          "size": {"$ref": "common.schema.json#/$defs/decimalString"},
+          "derived": {"type": "boolean", "description": "Synthesized by the adapter, not reported by the venue."},
+          "virtualPrice": {"type": "boolean", "description": "Cross-matched/aggregated level injected by the venue."}
+        },
+        "additionalProperties": false
+      }
+    },
+    "totalMatched": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "lastPriceTraded": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "asOf": {"$ref": "common.schema.json#/$defs/timestamp", "description": "Venue timestamp for the snapshot, when reported."},
+    "observedAt": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": true
+}

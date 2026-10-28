@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openbook-data-standards.github.io/openexchange/schema/market_book.schema.json",
+  "title": "OpenExchange market book — exchange-native market state",
+  "type": "object",
+  "required": ["openexchangeVersion", "bookType", "venue", "marketId", "status", "runners", "observedAt"],
+  "properties": {
+    "openexchangeVersion": {"type": "string"},
+    "bookType": {"const": "exchange:market_book"},
+    "id": {"type": "string"},
+    "identifier": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/identifier"}},
+    "venue": {"type": "string"},
+    "marketId": {"type": "string"},
+    "status": {"enum": ["inactive", "open", "suspended", "closed", "settled", "void"]},
+    "inplay": {"type": "boolean"},
+    "betDelay": {"type": "integer", "description": "Seconds of in-play bet delay."},
+    "crossMatching": {"type": "boolean"},
+    "bspReconciled": {"type": "boolean"},
+    "complete": {"type": "boolean", "description": "Venue reports the result complete."},
+    "delayed": {"type": "boolean"},
+    "totalMatched": {"$ref": "common.schema.json#/$defs/decimalString"},
+    "numberOfWinners": {"type": "integer"},
+    "numberOfRunners": {"type": "integer"},
+    "numberOfActiveRunners": {"type": "integer"},
+    "runners": {"type": "array", "items": {"$ref": "runner.schema.json"}},
+    "asOf": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "observedAt": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": true
+}
