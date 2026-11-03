@@ -1,0 +1,10 @@
+{
+  "openexchangeVersion": "0.1.0-draft",
+  "feeType": "exchange:fee_profile",
+  "id": "exchange:fees:example-exchange",
+  "model": "net_winnings",
+  "marketBaseRate": "0.05",
+  "chargeableBasis": "Net winnings per market",
+  "currency": "GBP",
+  "notes": "Synthetic example. Commission on net market winnings only; no per-ticket or settlement fee."
+}

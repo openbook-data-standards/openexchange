@@ -1,0 +1,12 @@
+{
+  "openexchangeVersion": "0.1.0-draft",
+  "venueType": "exchange:venue",
+  "id": "exchange:venue:example-exchange",
+  "name": "Example Exchange",
+  "kind": "betting_exchange",
+  "jurisdiction": ["GB"],
+  "currencies": ["GBP", "EUR"],
+  "distribution": ["example-exchange-lite"],
+  "feeProfile": "exchange:fees:example-exchange",
+  "url": "https://example.invalid/"
+}
