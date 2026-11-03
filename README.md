@@ -8,3 +8,5 @@ depth and fee profiles — the surface betting and prediction exchanges expose t
 OpenBook documents cannot carry.
 
 Spec: [spec/openexchange.md](spec/openexchange.md). Schemas: [schema/](schema/).
+Worked examples: [examples/](examples/) — synthetic venue, fee profile, market
+book and order books with a validation walkthrough.

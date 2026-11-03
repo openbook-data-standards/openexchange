@@ -1,0 +1,19 @@
+{
+  "openexchangeVersion": "0.1.0-draft",
+  "bookType": "exchange:order_book",
+  "id": "exchange:order_book:example-exchange:1.234567890:58805:back",
+  "venue": "exchange:venue:example-exchange",
+  "marketId": "1.234567890",
+  "selectionId": "58805",
+  "side": "back",
+  "delayed": false,
+  "levels": [
+    {"price": "2.10", "size": "420.00"},
+    {"price": "2.08", "size": "1150.00"},
+    {"price": "2.04", "size": "2600.00"}
+  ],
+  "totalMatched": "8210.15",
+  "lastPriceTraded": "2.10",
+  "asOf": "2026-01-15T12:00:00Z",
+  "observedAt": "2026-01-15T12:00:05Z"
+}
